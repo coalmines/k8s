@@ -1,0 +1,3 @@
+[submodule "coalmines-api/app"]
+	path = coalmines-api/app
+	url = ../coalmines-api/

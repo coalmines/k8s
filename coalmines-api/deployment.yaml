@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: default
+  name: coalmines
+  labels:
+    app: coalmines
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: coalmines
+  template:
+    metadata:
+      labels:
+        app: coalmines
+    spec:
+      containers:
+        - name: coalmines-api
+          image: coalmines-api
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 3000
+          # Define environment variables
+          envFrom:
+          - configMapRef:
+              name: coalmines-api-env
+      # restartPolicy: Never
